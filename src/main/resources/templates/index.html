@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Σεμινάρια</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+
+<div class="navbar">
+    <div class="container">
+        <div><strong>Simple Courses</strong></div>
+        <div>
+            Συνδεδεμένος: <span th:text="${username}">user</span>
+            &nbsp;|&nbsp;
+            <a th:href="@{/}">Home</a>
+            &nbsp;|&nbsp;
+            <a th:href="@{/logout}">Logout</a>
+
+            <span th:if="${isAdmin}">
+                &nbsp;|&nbsp;
+                <a th:href="@{/admin/courses}">Admin</a>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h1>Σεμινάρια</h1>
+
+    <table>
+        <tr>
+            <th>Τίτλος</th>
+            <th>Περιγραφή</th>
+        </tr>
+        <tr th:each="c : ${courses}">
+            <td th:text="${c.title}"></td>
+            <td th:text="${c.description}"></td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

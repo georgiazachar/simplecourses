@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Login - Simple Courses</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+
+<div class="navbar">
+    <div class="container">
+        <div><strong>Simple Courses</strong></div>
+        <div class="navbar-subtitle">Παρακαλώ συνδεθείτε</div>
+    </div>
+</div>
+
+<div class="auth-wrapper">
+    <div class="auth-box">
+        <h1>Είσοδος</h1>
+
+        <form th:action="@{/login}" method="post">
+            <div>
+                <label>Username:</label>
+                <input type="text" name="username"/>
+            </div>
+            <div>
+                <label>Password:</label>
+                <input type="password" name="password"/>
+            </div>
+            <button type="submit">Σύνδεση</button>
+        </form>
+
+        <div class="hint text-muted">
+            Demo λογαριασμοί:
+            <br/>Admin → <strong>admin / admin</strong>
+            <br/>User  → <strong>user / user</strong>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

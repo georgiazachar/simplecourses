@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Διαχείριση Φοιτητών</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+
+<div class="navbar">
+    <div class="container">
+        <div><strong>Simple Courses - Admin</strong></div>
+        <div>
+            <a th:href="@{/}">Home</a>
+            &nbsp;|&nbsp;
+            <a th:href="@{/admin/courses}">Courses</a>
+            &nbsp;|&nbsp;
+            <a th:href="@{/admin/students}">Students</a>
+            &nbsp;|&nbsp;
+            <a th:href="@{/admin/enrollments}">Enrollments</a>
+            &nbsp;|&nbsp;
+            <a th:href="@{/logout}">Logout</a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h1>Διαχείριση Φοιτητών (ADMIN)</h1>
+
+    <h2>Νέος Φοιτητής</h2>
+    <form th:action="@{/admin/students}" th:object="${student}" method="post">
+        <div>
+            <label>Ονοματεπώνυμο:</label>
+            <input type="text" th:field="*{fullName}"/>
+        </div>
+        <div>
+            <label>Email:</label>
+            <input type="email" th:field="*{email}"/>
+        </div>
+        <button type="submit">Αποθήκευση</button>
+    </form>
+
+    <h2>Όλοι οι Φοιτητές</h2>
+    <table>
+        <tr>
+            <th>Όνομα</th>
+            <th>Email</th>
+            <th>Ενέργεια</th>
+        </tr>
+        <tr th:each="s : ${students}">
+            <td th:text="${s.fullName}"></td>
+            <td th:text="${s.email}"></td>
+            <td>
+                <form th:action="@{'/admin/students/delete/' + ${s.id}}" method="post">
+                    <button type="submit">Διαγραφή</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>
